@@ -18,7 +18,21 @@ class LoginPage {
 
   submit() {
     cy.get(this.submitButton).click();
+
+    cy.wait(5000);
+
+    cy.url().then((url) => {
+      if (url.includes("/wp-login")) {
+        cy.pause();
+
+        cy.wait(5000);
+      } else {
+        cy.log("Not on /wp-login — skipping");
+      }
+    });
+
     return this;
   }
 }
+
 export default new LoginPage();

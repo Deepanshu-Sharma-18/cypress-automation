@@ -28,4 +28,22 @@ describe("Deal Page Tests", () => {
     faqAccordion.clickFirstAccordion();
     faqAccordion.verifyAccordionContentVisible(0);
   });
+
+  it("should validate if leave review is visible on the deal page", () => {
+    const dealPage = new DealPage("vector-image-converter/");
+    dealPage.visit();
+    dealPage.getReview().ClickReviewTab().VerifyReviewFormVisible();
+  });
+
+  it("should validate the consistency of prices in related products", () => {
+    const dealPage = new DealPage("vector-image-converter/");
+    dealPage.visit();
+    dealPage.VerifyPriceConsistency();
+  });
+
+  it("should verify that continue without membership has consitent buttons in the modal", () => {
+    const dealPage = new DealPage("vector-image-converter/");
+    dealPage.visit();
+    dealPage.VerifyButtonsBuyWithoutMembership();
+  });
 });

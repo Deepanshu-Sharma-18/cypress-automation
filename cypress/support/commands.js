@@ -51,3 +51,34 @@ Cypress.Commands.add("stubThirdPartyScripts", () => {
   // Block YouTube embeds
   cy.intercept("GET", "**/youtube.com/**", { statusCode: 200 });
 });
+
+// Cypress.Commands.add("purgeVarnishCache", (path = "/") => {
+//   const baseUrl = Cypress.config().baseUrl;
+
+//   // Method 1: PURGE specific path (most common)
+//   cy.request({
+//     method: "PURGE",
+//     url: `${baseUrl}${path}`,
+//     failOnStatusCode: false,
+//   }).then((response) => {
+//     cy.log(`PURGE ${path}: ${response.status}`);
+
+//     if (response.status >= 200 && response.status < 300) {
+//       cy.log("✓ Cache purged successfully");
+//       return;
+//     }
+//   });
+
+//   // Method 2: Try with X-Purge-Method header
+//   cy.request({
+//     method: "GET",
+//     url: `${baseUrl}${path}`,
+//     headers: {
+//       "X-Purge-Method": "regex",
+//       "X-Purge-Regex": ".*",
+//     },
+//     failOnStatusCode: false,
+//   });
+
+//   cy.wait(1500);
+// });

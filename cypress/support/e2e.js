@@ -15,6 +15,7 @@
 
 // Import commands.js using ES2015 syntax:
 import "./commands";
+import "cypress-iframe";
 
 Cypress.on("uncaught:exception", (err, runnable) => {
   // console.log("Uncaught exception:", err.message);
